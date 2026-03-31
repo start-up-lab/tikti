@@ -5,15 +5,21 @@
 
 ---
 
-## 📝 Présentation du Projet
+## 📍 Nature du Projet
 
-**ia_start-up_assistant** est une plateforme conçue pour décrypter l'écosystème des startups en Algérie. Elle transforme des données complexes (lois, rapports de l'ONS, JORADP) en conseils actionnables pour aider les porteurs de projets à valider leurs idées de business.
+Ce dépôt contient la **Landing Page** de ia_start-up_assistant
+Elle sert de point d'entrée pour :
 
-## 🛠️ Fonctionnalités Clés
+- Présenter la proposition de valeur de l'assistant.
+- Diriger les utilisateurs vers le prototype conversationnel.
+- Centraliser les ressources et l'écosystème startup en Algérie.
 
-- **Analyse Business Automatisée** : Génération de matrices SWOT et PESTEL contextuelles au marché algérien.
-- **Identification d'Audience** : Analyse des segments clients et création de profils types (User Personas).
-- **Stratégies sur Mesure** : Recommandations basées sur les frameworks entrepreneuriaux modernes.
+## 🛠️ Ce que présente cette Landing Page
+
+- **Analyse Stratégique** : Présentation des capacités d'analyse de l'assistant.
+- **Cibles Utilisateurs** : Segmentation des porteurs de projets, étudiants et incubateurs.
+- **Feuille de Route** : Étapes de développement du "vrai" site de l'assistant.
+- **Accès Prototype** : Boutons d'accès directs vers l'interface de test Botpress.
 
 ## 🧠 Stack Technique
 
@@ -21,11 +27,13 @@
 - **Interface (Front-End)** : HTML5 / CSS3 / Bootstrap 5 avec un design moderne de type **Glassmorphism**.
 - **Framework IA** : Prototype propulsé par **Botpress**.
 
-## 📅 Roadmap (Feuille de route)
+## 🤖 L'Assistant (Le Produit Réel)
 
-1.  **Mars 2026** : Lancement du prototype (PoC) et architecture de base.
-2.  **Avril 2026** : Enrichissement de la base de données (Data Mining) via les sources officielles.
-3.  **Juin 2026** : Déploiement de la version finale de l'assistant.
+Le "vrai" site de l'assistant, dont cette page est la vitrine, repose sur :
+
+- **Moteur IA** : Architecture **RAG (Retrieval-Augmented Generation)**.
+- **Base de Données** : Documents officiels.
+- **Interface App** : Développée séparément pour une interaction conversationnelle fluide.
 
 ## 👥 L'Équipe
 
@@ -42,4 +50,4 @@
 
 ---
 
-© 2026 ia_start-up_assistant - Tous droits réservés.
+© 2026 ia_start-up_assistant - Landing Page de l'Assistant IA Entrepreneurial.

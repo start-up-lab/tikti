@@ -38,7 +38,7 @@ Le "vrai" site de l'assistant, dont cette page est la vitrine, repose sur :
 ## 👥 L'Équipe
 
 - **Étudiantes (UMMTO)** : Hanane Abdelaziz, Dyhia Hachemi, Thanina Ould Taleb, Melissa Rachi.
-- **Encadrement** : Mr. Samy Sadi (UMMTO) & Mr. Abdelkrim Doufene (BIGmama Technology).
+- **Encadrement** : Mr. Abdelkrim Doufene, Mr. M'hamed Tayeb & Mr. Samy Sadi.
 
 ## 🚀 Installation & Utilisation
 

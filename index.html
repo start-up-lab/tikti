@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tikti - L'IA pour les Startups en Algérie</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0b0e14;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --neon-blue: #00d2ff;
+            --neon-purple: #3a7bd5;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Arrière-plan fluide IA */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -20%; right: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 60%);
+            z-index: -1;
+            filter: blur(60px);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(11, 14, 20, 0.8) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .navbar-brand { font-weight: 800; color: white !important; letter-spacing: 1px; }
+        .nav-link { font-weight: 600; font-size: 0.9rem; color: #aaa !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--neon-blue) !important; }
+
+        /* TEXTE DÉGRADÉ (Correction de l'erreur) */
+        .text-gradient {
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            padding: 80px 0 100px;
+            text-align: center;
+        }
+        .hero-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 50px;
+            color: var(--neon-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        /* BOUTONS */
+        .btn-neon {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-neon:hover {
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            transform: translateY(-2px);
+            color: white;
+        }
+        .btn-outline-glass {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline-glass:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        /* GLASS CARDS */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            height: 100%;
+            transition: 0.4s;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 210, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .icon-gradient {
+            font-size: 2.5rem;
+            background: linear-gradient(var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* ÉQUIPE */
+        .team-member {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        /* FAQ ACCORDION CUSTOMIZATION */
+        .accordion-button::after {
+            filter: invert(1) grayscale(100%) brightness(200%); /* Rend la flèche blanche */
+        }
+        .accordion-button:not(.collapsed)::after {
+            filter: invert(60%) sepia(85%) saturate(3000%) hue-rotate(160deg) brightness(100%); /* Flèche bleu fluo quand ouvert */
+        }
+        .accordion-button:focus {
+            box-shadow: none; /* Enlève le contour bleu moche par défaut de Bootstrap */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fa-solid fa-lightbulb me-2" style="color: var(--neon-blue)"></i> 
+                Tikti
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="#solution">La Solution</a></li>
+                <li class="nav-item"><a class="nav-link" href="#techno">Technologie</a></li>
+                <li class="nav-item"><a class="nav-link" href="#ecosysteme">Ressources</a></li> 
+                <li class="nav-item"><a class="nav-link" href="#equipe">L'Équipe</a></li>
+            </ul>
+                <a href="#" class="btn btn-neon btn-sm px-4">Lancer l'App <i class="fa-solid fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <span class="hero-badge"><i class="fa-solid fa-flask me-2"></i>Innovation Lab - BIGmama x UMMTO</span>
+            <h1 class="hero-title">Décryptez l'écosystème Startup avec <span class="text-gradient">l'Intelligence Artificielle</span>.</h1>
+            <p class="lead text-secondary mx-auto mb-5" style="max-width: 700px;">
+                Tikti analyse des milliers de données économiques pour vous révéler les meilleures opportunités entrepreneuriales en Algérie. 
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/03/26/11/20260326111134-036V9UFV.json" target="_blank" class="btn-neon">
+                    <i class="fa-solid fa-robot me-2"></i> Tester le Prototype
+                </a>
+                <a href="#solution" class="btn-outline-glass">Découvrir le projet</a>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <section id="solution" class="py-5">
+        <div class="container">
+            <div class="glass-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">LE DÉFI</h6>
+                        <h2 class="fw-bold text-white mb-4">De la donnée complexe à la décision simple.</h2>
+                        <p class="text-secondary mb-4">
+                            L'information économique en Algérie est souvent dispersée dans de longs rapports PDF et des études de marché denses. 
+                            <strong>Notre mission :</strong> développer un assistant intelligent capable de lire, comprendre et synthétiser ces données pour les futurs entrepreneurs.
+                        </p>
+                        <ul class="list-unstyled text-secondary">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Identification des secteurs porteurs.</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Analyse automatisée de documents lourds.</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Interface conversationnelle naturelle.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5 text-center mt-5 mt-lg-0">
+                        <i class="fa-solid fa-network-wired text-gradient" style="font-size: 8rem; opacity: 0.8; filter: drop-shadow(0 0 20px rgba(0,210,255,0.4));"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mt-5">
+    <div class="row g-4 text-center justify-content-center">
+        <div class="col-md-4">
+            <div class="p-4 glass-card" style="padding: 20px !important;">
+                <h3 class="fw-bold mb-0 text-gradient" style="font-size: 2.5rem;">50+</h3>
+                <p class="text-secondary small mb-0 mt-2">Textes de loi & Rapports intégrés</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 glass-card" style="padding: 20px !important;">
+                <h3 class="fw-bold mb-0 text-gradient" style="font-size: 2.5rem;">100%</h3>
+                <p class="text-secondary small mb-0 mt-2">Orienté Marché Algérien</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 glass-card" style="padding: 20px !important;">
+                <h3 class="fw-bold mb-0 text-gradient" style="font-size: 2.5rem;">24/7</h3>
+                <p class="text-secondary small mb-0 mt-2">Analyse IA instantanée</p>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="features" class="py-5 mt-5">
+        <div class="container">
+            <div class="mb-5">
+                <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">POTENTIEL ILLIMITÉ</h6>
+                <h2 class="fw-bold text-white hero-title" style="font-size: 2.5rem;">Découvrez le potentiel de votre idée</h2>
+                <p class="text-secondary mb-5" style="max-width: 600px;">Notre assistant génère des analyses stratégiques approfondies (SWOT, PESTEL) basées sur l'écosystème algérien.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="glass-card p-4">
+                        <div class="icon-circle mb-4"><i class="fa-solid fa-file-contract"></i></div>
+                        <h5 class="text-white fw-bold">Analyse Business Complète</h5>
+                        <p class="text-secondary small">Évaluation de la viabilité de votre projet avec génération automatique de matrices SWOT et PESTEL adaptées au marché local.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4">
+                        <div class="icon-circle mb-4"><i class="fa-solid fa-users-gear"></i></div>
+                        <h5 class="text-white fw-bold">Identification de l'Audience</h5>
+                        <p class="text-secondary small">Précisions sur vos segments de clients en Algérie, profils types (User Personas) et données démographiques pertinentes.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4">
+                        <div class="icon-circle mb-4"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h5 class="text-white fw-bold">Stratégies Personnalisées</h5>
+                        <p class="text-secondary small">Recommandations de frameworks et conseils stratégiques pour transformer une idée brute en business model solide.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4">
+                        <div class="icon-circle mb-4"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h5 class="text-white fw-bold">Conseils Marketing</h5>
+                        <p class="text-secondary small">Guide sur le positionnement de marque et les canaux de communication les plus efficaces pour toucher le public algérien.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4">
+                        <div class="icon-circle mb-4"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h5 class="text-white fw-bold">Opportunités d'Innovation</h5>
+                        <p class="text-secondary small">L'IA identifie des "blue oceans" (secteurs peu exploités) et propose des fonctionnalités différenciantes pour votre startup.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card p-4">
+                        <div class="icon-circle mb-4"><i class="fa-solid fa-hand-pointer"></i></div>
+                        <h5 class="text-white fw-bold">Expérience Fluide</h5>
+                        <p class="text-secondary small">Une interface simple pensée pour les entrepreneurs, permettant d'obtenir des résultats complexes en quelques clics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="techno" class="py-5 mt-5">
+        <div class="container text-center">
+            <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">MOTEUR IA</h6>
+            <h2 class="fw-bold text-white mb-5">Notre Stack Technologique</h2>
+            
+            <div class="row g-4 justify-content-center"> <div class="col-md-5">
+                    <div class="glass-card text-center d-flex flex-column h-100">
+                        <i class="fa-solid fa-comments icon-gradient"></i>
+                        <h4 class="text-white">Botpress</h4>
+                        <p class="text-secondary small flex-grow-1">Notre premier démonstrateur technique (PoC). Ce bot expérimental permet de tester l'architecture du site et l'interaction avec un premier échantillon de documents.</p>
+                        <a href="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/03/26/11/20260326111134-036V9UFV.json" target="_blank" class="btn btn-neon mt-3 w-100">
+                            Tester le Bot <i class="fa-solid fa-robot ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="glass-card text-center d-flex flex-column h-100">
+                        <i class="fa-solid fa-chart-line icon-gradient"></i>
+                        <h4 class="text-white">Enquête Terrain</h4>
+                        <p class="text-secondary small flex-grow-1">Nous avons récolté les problématiques réelles des porteurs de projets algériens pour construire et orienter la base de connaissances de notre IA.</p>
+                        <div class="d-flex flex-column gap-2 mt-3">
+                            <a href="https://forms.gle/goSLLkjwRxBs2Cec8" target="_blank" class="btn btn-outline-glass w-100">
+                                <i class="fa-solid fa-clipboard-list me-2"></i> Formulaire Français
+                            </a>
+                            <a href="https://forms.gle/tn5xHfb5cgsJ6H5V9" target="_blank" class="btn btn-outline-glass w-100">
+                                <i class="fa-solid fa-clipboard-list me-2"></i> Formulaire Anglais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-5 mt-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">TIMELINE</h6>
+                <h2 class="fw-bold text-white">Notre Feuille de Route</h2>
+                <p class="text-secondary">Du concept de stage à la solution fonctionnelle.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="position-relative border-start border-info border-opacity-25 ms-3 ms-md-5" style="border-width: 2px !important;">
+                        
+                        <div class="position-relative mb-4 ms-4 ms-md-5">
+                            <span class="position-absolute top-0 start-0 translate-middle rounded-circle" style="width: 16px; height: 16px; background: var(--neon-blue); margin-left: -24px; box-shadow: 0 0 10px var(--neon-blue);"></span>
+                            <div class="glass-card" style="padding: 20px;">
+                                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 mb-2">Terminé</span>
+                                <h5 class="text-white fw-bold mb-1">Mars 2026 - Lancement du Prototype</h5>
+                                <p class="text-secondary small mb-0">Mise en place de l'architecture Botpress et premier entraînement du modèle conversationnel.</p>
+                            </div>
+                        </div>
+
+                        <div class="position-relative mb-4 ms-4 ms-md-5">
+                            <span class="position-absolute top-0 start-0 translate-middle rounded-circle" style="width: 16px; height: 16px; background: #fff; border: 3px solid var(--neon-blue); margin-left: -24px;"></span>
+                            <div class="glass-card" style="padding: 20px; border-color: rgba(0, 210, 255, 0.4);">
+                                <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 mb-2"><i class="fa-solid fa-spinner fa-spin me-1"></i> En cours</span>
+                                <h5 class="text-white fw-bold mb-1">Mars 2026 - Avril 2026 - Enrichissement des Data</h5>
+                                <p class="text-secondary small mb-0">Collecte de données via formulaire et Différents sites officiels.</p>
+                            </div>
+                        </div>
+
+                        <div class="position-relative mb-4 ms-4 ms-md-5">
+                            <span class="position-absolute top-0 start-0 translate-middle rounded-circle" style="width: 16px; height: 16px; background: var(--bg-dark); border: 2px solid rgba(255,255,255,0.3); margin-left: -24px;"></span>
+                            <div class="glass-card" style="padding: 20px; opacity: 0.7;">
+                                <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 mb-2">À venir</span>
+                                <h5 class="text-white fw-bold mb-1">Juin 2026 - Déploiement De l'Assistant </h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosysteme" class="py-5 mt-5">
+        <div class="container text-center">
+            <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">GUIDE & SOURCES</h6>
+            <h2 class="fw-bold text-white mb-5">Écosystème des Startups en Algérie</h2>
+            
+            <div class="row g-4">
+                
+                <div class="col-md-4">
+                    <div class="glass-card text-start d-flex flex-column h-100">
+                        <div class="text-center">
+                            <i class="fa-solid fa-list-check icon-gradient"></i>
+                            <h4 class="text-white mb-4">Étapes de Création</h4>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex mb-3">
+                                <div class="me-3"><span class="badge rounded-circle bg-primary">1</span></div>
+                                <p class="text-secondary small mb-0"><strong class="text-white">Idée :</strong> Définir votre Business Model Innovant.</p>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="me-3"><span class="badge rounded-circle bg-primary">2</span></div>
+                                <p class="text-secondary small mb-0"><strong class="text-white">Statut :</strong> Choisir la forme juridique (EURL, SARL, etc.).</p>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="me-3"><span class="badge rounded-circle bg-primary">3</span></div>
+                                <p class="text-secondary small mb-0"><strong class="text-white">Label :</strong> Postuler pour le label "Projet Innovant" ou "Startup".</p>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="me-3"><span class="badge rounded-circle bg-primary">4</span></div>
+                                <p class="text-secondary small mb-0"><strong class="text-white">Financement :</strong> Accès au ASF (Algeria Startup Fund).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card text-center d-flex flex-column h-100">
+                        <i class="fa-solid fa-building-columns icon-gradient"></i>
+                        <h4 class="text-white">Ministère des Startups</h4>
+                        <p class="text-secondary small flex-grow-1">
+                            Accédez au portail officiel du Ministère de l'Économie de la Connaissance pour vos démarches et la réglementation.
+                        </p>
+                        <a href="https://www.startup.dz" target="_blank" class="btn btn-outline-glass mt-3 w-100">
+                            Visiter le Portail officiel <i class="fa-solid fa-landmark ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card text-center d-flex flex-column h-100">
+                        <i class="fa-solid fa-database icon-gradient"></i>
+                        <h4 class="text-white">Sources de Données</h4>
+                        <p class="text-secondary small flex-grow-1">
+                            Consultez la liste des plateformes, documents officiels et rapports que nous utilisons pour entraîner l'IA (Data Mining).
+                        </p>
+                        <button type="button" class="btn btn-outline-glass mt-3 w-100" data-bs-toggle="modal" data-bs-target="#sourcesModal" style="border-color: #ffc107; color: #ffc107;">
+                            Voir nos sources <i class="fa-solid fa-list ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe" class="py-5 mt-5 mb-5">
+        <div class="container">
+            <div class="glass-card">
+                <div class="text-center mb-5">
+                    <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">À PROPOS</h6>
+                    <h2 class="fw-bold text-white">L'Équipe derrière Tikti</h2>
+                    <p class="text-secondary">Un projet pluridisciplinaire, réunissant le monde académique et l'entreprise.</p>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-3 col-6">
+                        <div class="team-member">
+                            <strong class="text-white d-block">Hanane Abdelaziz</strong>
+                            <small class="text-secondary d-block mb-2">Etudiante</small>
+                            <a href="https://www.linkedin.com/in/hanane-a-1ba8a1352/" target="_blank" style="color: var(--neon-blue); transition: 0.3s; font-size: 1.2rem;">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-6">
+                        <div class="team-member">
+                            <strong class="text-white d-block">Dyhia Hachemi</strong>
+                            <small class="text-secondary d-block mb-2">Etudiante</small>
+                            <a href="https://www.linkedin.com/in/dyhia-hachemi-18214a317/" target="_blank" style="color: var(--neon-blue); transition: 0.3s; font-size: 1.2rem;">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <div class="team-member">
+                            <strong class="text-white d-block">Thanina Ould Taleb</strong>
+                            <small class="text-secondary d-block mb-2">Etudiante</small>
+                            <a href="https://www.linkedin.com/in/thanina-ould-taleb-8017523ba/" target="_blank" style="color: var(--neon-blue); transition: 0.3s; font-size: 1.2rem;">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-6">
+                        <div class="team-member">
+                            <strong class="text-white d-block">Melissa Rachi</strong>
+                            <small class="text-secondary d-block mb-2">Etudiante</small>
+                            <a href="https://www.linkedin.com/in/melissa-rachi-33b2062b5/" target="_blank" style="color: var(--neon-blue); transition: 0.3s; font-size: 1.2rem;">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-color: var(--glass-border);">
+
+                <div class="row text-center mt-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <span class="text-secondary small d-block mb-1">Encadreur Académique (UMMTO)</span>
+                        <strong class="text-white fs-5">Mr. Samy SADI</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-secondary small d-block mb-1">Encadreur en Entreprise (BIGmama)</span>
+                        <strong class="text-white fs-5">Mr. Abdelkrim DOUFENE</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 text-center">
+    <div class="container">
+        <div class="glass-card border-neon" style="border: 1px solid var(--neon-blue);">
+            <h3 class="text-white mb-4">Prêt à transformer votre idée en Startup ?</h3>
+            <p class="text-secondary mb-4">Posez vos questions à Tikti et obtenez des réponses basées sur les données réelles du marché algérien.</p>
+            <a href="#" target="_blank" class="btn btn-neon lg">
+                <i class="fa-solid fa-rocket me-2"></i> Commencer l'Analyse
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="py-5 mt-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 style="color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">QUESTIONS FRÉQUENTES</h6>
+                <h2 class="fw-bold text-white">Ce qu'il faut savoir sur Tikti</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion accordion-flush" id="faqAccordion">
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25 mb-3">
+                            <h2 class="accordion-header" id="headingZero">
+                                <button class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero" style="font-size: 1.1rem;">
+                                    Qu'est-ce que Tikti concrètement ?
+                                </button>
+                            </h2>
+                            <div id="collapseZero" class="accordion-collapse collapse show" aria-labelledby="headingZero" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary px-0 pt-2 pb-4 small">
+                                    <strong>Tikti</strong> est une plateforme d'intelligence artificielle conçue pour accompagner les entrepreneurs algériens dans la phase critique de création de startup. <br><br>
+                                    C'est un <strong>assistant stratégique</strong> qui transforme des milliers de pages de rapports économiques, de lois et d'études de marché en conseils actionnables. Il vous aide à valider votre idée, à comprendre les régulations locales et à identifier les secteurs les plus porteurs en Algérie grâce à une interface conversationnelle simple.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25 mb-3">
+                            <h2 class="accordion-header" id="headingTarget">
+                                <button class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget" style="font-size: 1.1rem;">
+                                    À qui s'adresse réellement Tikti ?
+                                </button>
+                            </h2>
+                            <div id="collapseTarget" class="accordion-collapse collapse" aria-labelledby="headingTarget" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary px-0 pt-2 pb-4 small">
+                                    Notre solution est conçue pour trois profils principaux :
+                                    <ul class="mt-2">
+                                        <li><strong>Les Porteurs de Projets :</strong> Pour tester la viabilité d'une idée et obtenir des bases d'études de marché en quelques secondes.</li>
+                                        <li><strong>Les Étudiants :</strong> Pour faciliter leurs recherches académiques sur l'entrepreneuriat et l'économie numérique en Algérie.</li>
+                                        <li><strong>Les Incubateurs & Accélérateurs :</strong> Pour offrir un outil de pré-filtrage et d'aide à la décision aux startups qu'ils accompagnent.</li>
+                                    </ul>
+                                    En résumé, toute personne souhaitant entreprendre en Algérie avec une approche <strong>basée sur la donnée</strong> plutôt que sur l'intuition.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25 mb-3">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="font-size: 1.1rem;">
+                                    Quelles sont les données utilisées par l'IA ?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary px-0 pt-2 pb-4 small">
+                                    Tikti est entraîné sur un échantillon restreint de rapports économiques publics, d'études de marché algériennes et d'articles spécialisés. À terme, la base s'enrichira de données gouvernementales (ONS, CNRC) et de retours terrain pour une précision maximale.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25 mb-3">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 1.1rem;">
+                                    L'outil est-il destiné à remplacer un consultant ou un expert-comptable ?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary px-0 pt-2 pb-4 small">
+                                    Non. Tikti est un outil d'aide à la décision en <strong>phase de pré-lancement</strong> (idéation et étude de marché macroéconomique). Il permet de valider une tendance, mais la structuration juridique et comptable nécessite toujours l'accompagnement d'un professionnel qualifié.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25 mb-3">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="font-size: 1.1rem;">
+                                    Quelle est la différence entre Tikti et un ChatGPT classique ?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary px-0 pt-2 pb-4 small">
+                                    Contrairement à un modèle généraliste, Tikti utilise la technique du <strong>RAG (Retrieval-Augmented Generation)</strong>. Cela signifie qu'il ne "devine" pas les réponses, mais les puise exclusivement dans une base de données vérifiée de documents officiels algériens, garantissant des informations contextuelles et à jour.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25 mb-3">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="font-size: 1.1rem;">
+                                    L'IA peut-elle m'aider à obtenir le Label "Startup" ?
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary px-0 pt-2 pb-4 small">
+                                    Oui, indirectement. Tikti vous aide à structurer votre argumentaire sur le caractère <strong>innovant</strong> et le <strong>potentiel de scalabilité</strong> de votre projet, qui sont les deux critères majeurs exigés par le comité national de labellisation en Algérie.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <a href="#" class="btn btn-neon position-fixed bottom-0 end-0 m-4 rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 50px; height: 50px; z-index: 1000; opacity: 0.8;">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
+    <footer class="py-4 mt-5" style="background: rgba(0,0,0,0.5); border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                         <img src="https://www.google.com/s2/favicons?domain=ummto.dz&sz=128" alt="UMMTO Logo" style="height: 40px; width: 40px; border-radius: 5px; filter: brightness(0) invert(1); opacity: 0.9;">
+                        <div class="ms-3">
+                            <strong class="text-white d-block" style="font-size: 0.9rem;">UMMTO</strong>
+                            <span class="text-secondary" style="font-size: 0.7rem;">Université Mouloud Mammeri</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 text-center mb-3 mb-md-0 text-secondary" style="font-size: 0.85rem;">
+                    <strong>Tikti</strong> © 2026<br>
+                </div>
+
+                <div class="col-md-4 text-center text-md-end">
+                    <a href="https://big-mama.io/fr/" target="_blank" class="text-decoration-none">
+                        <div class="d-flex align-items-center justify-content-center justify-content-md-end">
+                            <div class="me-3 text-end">
+                                <strong class="text-white d-block" style="font-size: 0.9rem;">BIGmama</strong>
+                                <span class="text-secondary" style="font-size: 0.7rem;">Technology</span>
+                            </div>
+                            
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="sourcesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--bg-dark); border: 1px solid var(--neon-blue); box-shadow: 0 0 20px rgba(0,210,255,0.2);">
+                <div class="modal-header" style="border-bottom: 1px solid var(--glass-border);">
+                    <h5 class="modal-title text-white"><i class="fa-solid fa-database text-warning me-2"></i> Transparence des Données</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <p class="small text-secondary mb-4">Voici la liste des plateformes et documents officiels algériens que nous utilisons pour construire la base de connaissances de Tikti :</p>
+                    
+                    <div class="list-group mb-4">
+                        <a href="https://startup.dz/" target="_blank" class="list-group-item list-group-item-action text-white border-secondary d-flex align-items-center" style="background: rgba(255,255,255,0.02);">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-warning me-3"></i> 
+                            <div>
+                                <strong>Portail Officiel Startup.dz</strong>
+                                <small class="d-block text-secondary">Ministère de l'Économie de la Connaissance</small>
+                            </div>
+                        </a>
+
+                        <a href="https://www.joradp.dz/" target="_blank" class="list-group-item list-group-item-action text-white border-secondary d-flex align-items-center" style="background: rgba(255,255,255,0.02);">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-warning me-3"></i> 
+                            <div>
+                                <strong>Journal Officiel (JORADP)</strong>
+                                <small class="d-block text-secondary">Textes de loi et décrets exécutifs</small>
+                            </div>
+                        </a>
+
+                        <a href="https://www.ons.dz/" target="_blank" class="list-group-item list-group-item-action text-white border-secondary d-flex align-items-center" style="background: rgba(255,255,255,0.02);">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-warning me-3"></i> 
+                            <div>
+                                <strong>Office National des Statistiques (ONS)</strong>
+                                <small class="d-block text-secondary">Données économiques et rapports démographiques</small>
+                            </div>
+                        </a>
+
+                        <a href="https://asf.dz/" target="_blank" class="list-group-item list-group-item-action text-white border-secondary d-flex align-items-center" style="background: rgba(255,255,255,0.02);">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-warning me-3"></i> 
+                            <div>
+                                <strong>Algerian Startup Fund (ASF)</strong>
+                                <small class="d-block text-secondary">Mécanismes de financement et d'investissement</small>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="alert alert-info py-2 small mb-0" style="background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.3); color: var(--neon-blue);">
+                        <i class="fa-solid fa-circle-info me-2"></i> Cette base est en constante évolution pour garantir des réponses précises.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
